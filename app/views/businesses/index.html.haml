@@ -1,9 +1,9 @@
 %h2.page-header Business Listing
-- 10.times do
+- @businesses.each do
   %ul
-    %li= link_to "John's Auto Repair", nil
+    %li= link_to business.name, business
     %label Business Type:
-    Bussiness
+    = business.type
     %label Yawp Rating:
     4.8/5
     %br
