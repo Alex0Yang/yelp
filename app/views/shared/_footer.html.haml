@@ -1,0 +1,10 @@
+.main-content-wrap.main-content-wrap--separated
+  .content-container
+    .main-footer_city-landscape-img.responsive-hidden-small{:role => "presentation"}
+    .main-footer_copyright
+      Copyright © 2004–2016 Yelp Inc. Yelp,
+      = succeed "," do
+        %img.main-footer_logo-copyright{:alt => "Yelp logo", :src => asset_path('logo_tiny.png')}/
+      %img.main-footer_logo-burst{:alt => "Yelp burst", :src => asset_path("burst_tiny.png")}/
+      and related marks are registered trademarks of Yelp.
+    / Source: Freebase (http://www.freebase.com/), licensed under CC-BY (http://creativecommons.org/licenses/by/2.5/)

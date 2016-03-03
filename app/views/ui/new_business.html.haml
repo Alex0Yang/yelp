@@ -1,0 +1,37 @@
+%form.form-horizontal
+  %header
+    %h2.page-header Add a Business
+  %div.well.well-sm
+    %fieldset
+      .form-group
+        %label.control-label.col-sm-2 Business Name
+        .col-sm-4
+          %input.form-control(type="text")
+      .form-group
+        %label.control-label.col-sm-2 Business Type
+        .col-sm-4
+          %select.form-control(name="")
+            %option Automotive
+            %option Food
+            %option Home Services
+            %option Nightlife
+            %option Professional Services
+      .form-group
+        %label.control-label.col-sm-2 Business Description
+        .col-sm-4
+          %input.form-control(type="text")
+      .form-group
+        %label.control-label.col-sm-2 Address
+        .col-sm-4
+          %input.form-control(type="text")
+      .form-group
+        %label.control-label.col-sm-2 Phone Number
+        .col-sm-4
+          %input.form-control(type="text")
+      .form-group
+        %label.control-label.col-sm-2 Website
+        .col-sm-4
+          %input.form-control(type="text")
+    %fieldset.actions.control-group.col-sm-offset-2
+      .controls
+        %input(type="submit" value="Add Business" class="btn btn-default")

@@ -1,0 +1,60 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  width: auto
+}
+
+ul,li {
+  list-style: none
+}
+
+.well {
+  background-color: #FFFFFF;
+  -moz-border-radius:0 0 10px 10px;
+  -webkit-border-radius: 0 0 10px 10px;
+  border-radius:10px 10px 10px 10px;
+  border:0px
+}
+
+.navbar {
+  background-color: black;
+  color: white
+}
+
+.jumbotron {
+  background-image: url('/front_page_pic.jpg');
+  height: 400px
+}
+
+.form_container {
+  width: 50%;
+  background: rgba(255, 255, 255, 0.275);
+  padding: 20px;
+  margin: auto;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: 1px 7px 36px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 7px 36px -1px rgba(0,0,0,0.75);
+  box-shadow: 1px 7px 36px -1px rgba(0,0,0,0.75);
+}
+
+#brand-font {
+  text-align: inherit;
+}

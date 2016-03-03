@@ -1,0 +1,23 @@
+%h2.page-header Bob Johnson
+.container
+  .row
+    %header
+      %p I've been writing reviews since I could put pen to paper!
+      %br
+      %label Total Reviews:
+      756
+      %br
+      %label Location:
+      Somewhereville, NY
+      %br
+
+      - 5.times do
+        .well.container
+          %label Business:
+          =link_to "John's Auto Repair", nil
+          %br
+          %label Rating:
+          5 / 5
+          %br
+          %label Review:
+          %p I went to see John a couple of months ago when my car started to fall apart.  The service was fantastic and the price was very reasonable.  Everything went exactly the way I had hoped and I would definitely recommend going here for all of your car servicing needs.

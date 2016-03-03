@@ -1,3 +1,13 @@
+1. User can see a list of businesses (yelp currently doesn't have this page, but we'll build it anyway)
+2. User can add a business
+3. User Registration -  Sign Up
+4. User Registration -  Sign in and Sign Out
+5. User can see a list of recent reviews
+  - allow only text reviews
+6. User can review a business (add a new review)
+7. User can see another user's profile page
+  - also shows this user's past reviews
+For implementation, you should first build out the static mockups (build a UiController and have it serve the static mockups just like the way we did for MyFlix). You're free to come up with your own styles, but we recommend that you just reuse Yelp's styles as much as possible since this is not the focus of this practice project.
 == README
 
 This README would normally document whatever steps are necessary to get the
