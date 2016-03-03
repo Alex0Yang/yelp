@@ -1,0 +1,54 @@
+%h2.page-header John's Auto Repair
+.container
+  .row
+    %header
+      %p John's Auto Repair has been in business since 1958 and provides NYS inspection, repairs and general automotive services.
+      %br
+      %label Business Type:
+      Automotive
+      %br
+      %label Yawp Rating:
+      4.5/5 Stars
+      %br
+      %label Address:
+      123 Main St.
+      Anywhere, NY 12345
+      %br
+      %label Phone Number:
+      555-123-1234
+      %br
+      %label Website:
+      %a www.johnsautorepair.com
+%br
+%section.reviews.container
+  .row
+    %form
+      %fieldset
+        .form-group
+          %label Rate this Business
+          .row
+            .col-sm-3
+              %select.form-control(name="")
+                %option(value="5") 5 Stars
+                %option(value="4") 4 Stars
+                %option(value="3") 3 Stars
+                %option(value="2") 2 Stars
+                %option(value="1") 1 Star
+        .form-group
+          %label Write Review
+          .row
+            .col-sm-8
+              %textarea.form-control(name="" rows="6")
+      %fieldset.form-group.actions.clearfix
+        %input(type="submit" value="Submit" class="btn")
+        %a(href="") Cancel
+    %header
+      %h4 User Reviews (253)
+    %ul
+      - 5.times do
+        %li.row
+          .col-sm-2
+            %span Rating: 5 / 5
+            %p by <a href="">Bob Johnson</a>
+          .col-sm-8
+            %p I went to see John a couple of months ago when my car started to fall apart.  The service was fantastic and the price was very reasonable.  Everything went exactly the way I had hoped and I would definitely recommend going here for all of your car servicing needs.

@@ -1,0 +1,23 @@
+%section.container
+  %h2.page-header Sign up for a new account
+  %div.well.well-sm
+    %div.input-group.form-control
+      %label Full Name
+      .row
+        .col-sm-4
+          %input.form-control(type='email')
+      %label Email Address
+      .row
+        .col-sm-4
+          %input.form-control(type='email')
+      %label Password
+      .row
+        .col-sm-4
+          %input.form-control(type='email')
+      %label Confirm Password
+      .row
+        .col-sm-4
+          %input.form-control(type='password')
+    %br
+    %fieldset.form-group.action
+      %input{:type => 'submit', :value => 'Sign up', :class => 'btn btn-default'}
