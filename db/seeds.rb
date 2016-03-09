@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Category.create(name: "Automotive" )
+Category.create(name: "Food" )
+Category.create(name: "Home Services" )
+Category.create(name: "Nightlife" )
+Category.create(name: "Professional Services" )
+
+Fabricate.times(10, :business, category: Category.all.sample)
