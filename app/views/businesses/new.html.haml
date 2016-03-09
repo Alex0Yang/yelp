@@ -1,0 +1,14 @@
+= bootstrap_form_for(@business, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-4") do  |f|
+  %header
+    %h2.page-header Add a Business
+  %div.well.well-sm
+    %fieldset
+      = f.text_field :name
+      = f.collection_select :category_id, Category.all, :id, :name, label: "Type"
+      = f.text_field :description
+      = f.text_field :address
+      = f.phone_field :phone
+      = f.text_field :website
+      %fieldset.actions.control-group.col-sm-offset-2
+        .controls
+          = f.submit "Add business"

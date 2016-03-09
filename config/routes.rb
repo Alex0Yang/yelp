@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  root "business#index"
   get 'ui(/:action)', controller: 'ui'
-  resources :businesses, only: [:index]
+  resources :businesses, only: [:index, :show, :create, :new]
+  get 'sign_up', to: 'user#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

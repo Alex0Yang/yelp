@@ -1,12 +1,13 @@
 %h2.page-header Business Listing
-- @businesses.each do
+- @businesses.each do |business|
   %ul
-    %li= link_to business.name, business
+    %li
+      = link_to business.name, business
     %label Business Type:
-    = business.type
+    = business.category_name
     %label Yawp Rating:
     4.8/5
     %br
     %label Last Review:
     September 30, 2015 by
-    %span= link_to "Perry Carbone"
+    %span= link_to "Alex Yang"
