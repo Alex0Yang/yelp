@@ -1,0 +1,13 @@
+%section.container
+  %h2.page-header Sign in to your account
+  %div.well.well-sm
+    = bootstrap_form_tag url: sign_in_path, method: :post do |f|
+      .row
+        .col-sm-4
+          = f.email_field "user[email]", label: "Email Address"
+      .row
+        .col-sm-4
+          = f.password_field "user[password]", label: "Password"
+      .row
+        .col-sm-4
+          = f.submit "Sign in", class: "btn btn-info"

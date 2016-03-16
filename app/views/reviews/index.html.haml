@@ -1,0 +1,14 @@
+%h2.page-header Recent Reviews
+- @reviews.each do |review|
+  .well.container
+    %label Business:
+    =link_to review.business_name, review.business
+    %br
+    %label Review Date:
+    September 20, 2015
+    %br
+    %label Rating:
+    5 / 5
+    %br
+    %label Review:
+    %p= review.content

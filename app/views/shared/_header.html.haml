@@ -1,17 +1,35 @@
-.main-header.main-content-wrap.js-main-header.main-header--slim
-  .content-container.clearfix
-    .arrange.arrange--18.main-header_arrange.arrange--middle
-      .arrange_unit.main-header--full_arrange_unit
-        %h1#logo.main-header_logo
-          %a{:href => "/"} Yelp
-      .arrange_unit.nowrap.arrange_unit--fill
-        %h2.main-header_title
-          %span for Business Owners
-      .arrange_unit.nowrap
-        .main-header_account.webview-hidden
-          %ul.header-nav
-            %li.header-nav_item.responsive-hidden-small
-              %a#header-sign-up.ybtn.ybtn-primary.main-header_button.header-nav_button--sign-up{:href => "/"} Sign Up
-            %li.header-nav_item.text-centered
-              %a.header-nav_link.header-nav_link--log-in{:href => "/login?return_url=/signup_business/new"}
-                Log In
+%nav.navbar.navbar-inverse
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#navigation", "data-toggle" => "collapse", :type => "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+      %a.navbar-brand
+        = link_to 'Yelp', nil
+    #navigation.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-left
+        %li= link_to 'Business List', businesses_path
+        %li= link_to 'Recent Reviews', recent_review_path
+        %li= link_to 'Add a Business', new_business_path
+        .navbar-form.navbar-left
+          = form_tag "#", method: :get do
+            .form-group
+              = text_field_tag :search_term, "Find a Business", class: 'form-control'
+              = submit_tag 'Search', class: 'btn btn-default'
+      - if current_user
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown
+            %a.dropdown-toggle{id:"dlabel", "aria-expanded" => "false", "data-target" => "#", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              Welcome,  #{current_user.full_name}
+              %span.caret
+            %ul.dropdown-menu(role="menu" aria-labelledby="dlabel")
+              %li= link_to 'View Profile', nil
+              %li= link_to 'Edit Profile', nil
+              %li.divider{:role => "separator"}
+              %li= link_to 'Sign Out', sign_out_path, method: 'delete'
+      - else
+        %ul.nav.navbar-nav.navbar-right
+          %li= link_to 'Log In', nil
+          %li= link_to 'Register', nil
