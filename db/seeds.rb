@@ -12,4 +12,12 @@ Category.create(name: "Home Services" )
 Category.create(name: "Nightlife" )
 Category.create(name: "Professional Services" )
 
-Fabricate.times(10, :business, category: Category.all.sample)
+
+User.create(full_name: "alex", email: "yang@yang.com", password: "password")
+10.times.each do
+  Fabricate(:business, category: Category.all.sample)
+end
+
+20.times.each do
+  Fabricate(:review, user: User.all.sample, business: Business.all.sample)
+end
