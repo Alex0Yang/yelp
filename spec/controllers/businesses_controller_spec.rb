@@ -2,69 +2,68 @@ require 'spec_helper'
 
 describe BusinessesController do
   describe "GET index" do
-    it "sets @businesses" do
-      business_1 = Fabricate(:business)
-      business_2 = Fabricate(:business)
+    let(:business_1) { Fabricate(:business) }
+    let(:business_2) { Fabricate(:business) }
+
+    before do
       get :index
+    end
+    it "sets @businesses" do
       expect(assigns(:businesses)).to eq([business_1, business_2])
     end
 
-    it "render the index page" do
-      Fabricate(:business)
-      Fabricate(:business)
-      get :index
-      expect(response).to render_template "businesses/index"
-    end
+    it_behaves_like "render_page", "index"
   end
 
   describe "GET new" do
+    before { get :new }
+
     it "set @business" do
-      get :new
       expect(assigns(:business)).to be_kind_of(Business)
     end
 
-    it "render the 'businesses/new'" do
-      get :new
-      expect(response).to render_template("new")
-    end
+    it_behaves_like "render_page", "new"
   end
 
   describe "POST create" do
     context "input is valid" do
-      it "redrect to business lists" do
-        business_hash = Fabricate.attributes_for(:business)
+      let(:business_hash) { Fabricate.attributes_for(:business) }
+      before do
         post :create, business: business_hash
-        expect(response).to redirect_to businesses_path
       end
 
-      it "display a successful message" do
-        business_hash = Fabricate.attributes_for(:business)
-        post :create, business: business_hash
-        expect(flash[:success]).not_to be_blank
-      end
+      it_behaves_like "show_flash_message", :success
+
+      it_behaves_like "redirect_to", "/businesses"
 
       it "create a new business" do
-        business_hash = Fabricate.attributes_for(:business)
-        post :create, business: business_hash
         expect(Business.count).to eq(1)
       end
     end
 
     context "input is invalid" do
+      before do
+        post :create, business: { name: "some business"}
+      end
+
       it "cannot create a new business" do
-        post :create, business: { name: "some business"}
-        expect(response).to render_template "new"
+        expect(Business.count).to eq(0)
       end
 
-      it "display a unsuccessful message" do
-        post :create, business: { name: "some business"}
-        expect(flash[:warning]).not_to be_blank
-      end
+      it_behaves_like "show_flash_message", :warning
 
-      it "render new page" do
-        post :create, business: { name: "some business"}
-        expect(response).to render_template "new"
-      end
+      it_behaves_like "render_page", "new"
+    end
+  end
+
+  describe "GET show" do
+    let(:food) { Fabricate(:business, name: "food") }
+    before { get :show, id: food.id }
+
+    it_behaves_like "render_page", "show"
+
+    it "set @business" do
+      expect(assigns(:business).name).to eq("food")
     end
   end
 end

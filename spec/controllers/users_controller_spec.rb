@@ -2,16 +2,15 @@ require 'spec_helper'
 
 describe UsersController do
   describe "GET new" do
+    before { get :new }
+
     it "set @user" do
-      get :new
       expect(assigns(:user)).to be_kind_of(User)
     end
 
-    it "render the new page" do
-      get :new
-      expect(response).to render_template "new"
-    end
+    it_behaves_like "render_page", "new"
   end
+
   describe "POST create" do
     context "valid input" do
       before do
@@ -22,12 +21,12 @@ describe UsersController do
         expect(User.count).to eq(1)
       end
 
-      it "redirect to root_path" do
-        expect(response).to redirect_to root_path
-      end
+      it_behaves_like "redirect_to", "/"
 
-      it "have a success message" do
-        expect(flash[:success]).not_to be_empty
+      it_behaves_like "show_flash_message", :success
+
+      it "sign in the user" do
+        expect(session[:user_id]).to eq(User.last.id)
       end
     end
 
@@ -39,17 +38,21 @@ describe UsersController do
         expect(User.count).to eq(0)
       end
 
-      it "have a error message" do
-        expect(flash[:danger]).not_to be_empty
-      end
+      it_behaves_like "show_flash_message", :danger
 
-      it "render new page" do
-        expect(response).to render_template "new"
-      end
+      it_behaves_like "render_page", "new"
 
       it "set @user" do
         expect(assigns(:user)).to be_kind_of(User)
       end
+    end
+  end
+  describe "GET show" do
+    it "set @user" do
+      alice = Fabricate(:user)
+      session[:user_id] = alice.id
+      get :show, id: alice.id
+      expect(assigns(:user)).to eq(alice)
     end
   end
 end

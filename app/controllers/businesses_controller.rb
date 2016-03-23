@@ -19,9 +19,13 @@ class BusinessesController < ApplicationController
     end
   end
 
+  def show
+    @business = Business.find(params[:id])
+  end
+
   private
 
   def business_params
-    params.require(:business).permit(:category_id, :name, :description, :address)
+    params.require(:business).permit(:category_id, :name, :description, :address, :phone, :website)
   end
 end

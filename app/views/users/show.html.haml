@@ -1,0 +1,14 @@
+%h2.page-header= @user.full_name
+.container
+  .row
+    %header
+      %p I've been writing reviews since I could put pen to paper!
+      %br
+      %label Total Reviews:
+      #{@user.reviews.count}
+      %br
+      %label Location:
+      Somewhereville, NY
+      %br
+
+      = render partial: @user.reviews

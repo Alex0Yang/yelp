@@ -5,9 +5,10 @@
       = link_to business.name, business
     %label Business Type:
     = business.category_name
-    %label Yawp Rating:
+    %label Yelp Rating:
     4.8/5
     %br
-    %label Last Review:
-    September 30, 2015 by
-    %span= link_to "Alex Yang"
+    - if business.has_review?
+      %label Last Review:
+      #{time_format(business.last_review_time)} by
+      %span= link_to business.last_review_user_name, business.last_review_user
