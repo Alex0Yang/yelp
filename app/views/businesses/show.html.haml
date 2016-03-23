@@ -1,0 +1,49 @@
+%h2.page-header= @business.name
+.container
+  .row
+    %header
+      %p= @business.description
+      %br
+      %label Business Type:
+      = @business.category_name
+      %br
+      %label Yelp Rating:
+      4.5/5 Stars
+      %br
+      %label Address:
+      = @business.address
+      %br
+      %label Phone Number:
+      = @business.phone
+      %br
+      %label Website:
+      %a= @business.website
+%br
+%section.reviews.container
+  .row
+    = form_for Review.new do |f|
+      = hidden_field_tag("review[business_id]", @business.id )
+      %fieldset
+        .form-group
+          = f.label :rate, "Rate this Business"
+          .row
+            .col-sm-3
+              = f.select :rate, options_for_business_rate, {},{ class: "form-control"}
+        .form-group
+          = f.label :content, "Write Review"
+          .row
+            .col-sm-8
+              = f.text_area :content, rows: 6, class:"form-control"
+      %fieldset.form-group.actions.clearfix
+        = f.submit :submit, class: "btn btn-info"
+        = link_to "Cancel", ""
+    %header
+      %h4 User Reviews (#{@business.reviews.count})
+    %ul
+      - @business.reviews.each do |review|
+        %li.row
+          .col-sm-2
+            %span Rating: #{review.rate} / 5
+            %p by #{link_to review.user_full_name, review.user}
+          .col-sm-8
+            %p= review.content

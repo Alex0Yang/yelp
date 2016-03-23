@@ -2,7 +2,7 @@
   %head
     %title A Yelp Clone
     %meta(name="description" content="Yelp Clone")
-    %meta(name="author" content="Alex Yang")
+    %meta(name="author" content="Alex")
     %meta(charset="UTF-8")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     = csrf_meta_tags
@@ -19,6 +19,7 @@
         = render 'shared/messages'
         = yield
     %footer
+      %br
       %div.col-lg-12{:style => "text-align: center"}
-        &copy 2015
-        %a{:href => "", :target => "_blank"} Visit my Portfolio Web Page
+        &copy 2016
+        = link_to  "Another Yelp", root_path, target: "_blank"

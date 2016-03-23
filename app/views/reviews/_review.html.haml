@@ -1,0 +1,12 @@
+.well.container
+  %label Business:
+  =link_to review.business_name, review.business
+  %br
+  %label Review Date:
+  #{time_format(review.created_at)}
+  %br
+  %label Rating:
+  #{review.rate} / 5
+  %br
+  %label Review:
+  %p= review.content
