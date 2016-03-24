@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -15,6 +15,7 @@ gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'haml-rails'
 gem 'bcrypt'
+gem 'pg'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
