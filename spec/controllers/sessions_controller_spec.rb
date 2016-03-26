@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe SessionsController do
+
   context "GET new" do
     context "unauthenticated user" do
       before do
@@ -23,9 +24,7 @@ describe SessionsController do
     let(:alice) { Fabricate(:user, password: "password") }
 
     context "valid email && password" do
-      before do
-        post :create, user: { email: alice.email, password: alice.password }
-      end
+      before { post :create, user: { email: alice.email, password: alice.password } }
 
       it_behaves_like "show_flash_message", :success
 
@@ -39,9 +38,7 @@ describe SessionsController do
     end
 
     context "invalid email or password" do
-      before do
-        post :create, user: { email: alice.email, password: alice.password + "1" }
-      end
+      before { post :create, user: { email: alice.email, password: alice.password + "1" } }
 
       it_behaves_like "show_flash_message", :danger
 
@@ -53,11 +50,13 @@ describe SessionsController do
     end
 
   end
+
   context "DELETE destroy" do
     before do
       set_current_user
       delete :destroy
     end
+
     it "redirects to sign in page" do
       expect(response).to redirect_to sign_in_path
     end

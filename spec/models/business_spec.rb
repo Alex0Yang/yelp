@@ -17,6 +17,7 @@ describe Business do
 
   describe "#has_review" do
     let(:business) { Fabricate(:business) }
+
     it "return true if the count of review greater than zero" do
       Fabricate(:review, business: business)
       expect(business.has_review?).to be true

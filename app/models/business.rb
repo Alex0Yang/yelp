@@ -7,7 +7,7 @@ class Business < ActiveRecord::Base
   validates_presence_of :name, :category
 
   def has_review?
-    reviews.count > 0 ? true : false
+    reviews.count > 0
   end
 
   def last_review
