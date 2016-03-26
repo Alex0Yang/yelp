@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe ReviewsController do
+
   describe "GET index" do
     it "render the index page" do
       get :index
@@ -16,11 +17,13 @@ describe ReviewsController do
   end
 
   describe "POST create" do
+
     context "unauthenticated user" do
       it "redirects to sign in page" do
         post :create
         expect(response).to redirect_to sign_in_path
       end
+
       it "no business's review added" do
         post :create
         expect(Review.count).to eq(0)
@@ -31,9 +34,7 @@ describe ReviewsController do
       let(:alice) { Fabricate(:user) }
       let(:business) { Fabricate(:business) }
 
-      before do
-        set_current_user(alice)
-      end
+      before { set_current_user(alice) }
 
       context "valid input" do
         before do

@@ -31,14 +31,13 @@ describe UsersController do
     end
 
     context "invalid input" do
-      before do
-        post :create, user: { full_name: "alice" }
-      end
+      before { post :create, user: { full_name: "alice" } }
+
       it "cannot sign up" do
         expect(User.count).to eq(0)
       end
 
-      it_behaves_like "show_flash_message", :danger
+      it_behaves_like "show_flash_message", :danger, :now
 
       it_behaves_like "render_page", "new"
 
@@ -47,6 +46,7 @@ describe UsersController do
       end
     end
   end
+
   describe "GET show" do
     it "set @user" do
       alice = Fabricate(:user)

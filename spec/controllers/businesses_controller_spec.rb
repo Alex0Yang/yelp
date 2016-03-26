@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe BusinessesController do
+
   describe "GET index" do
     let(:business_1) { Fabricate(:business) }
     let(:business_2) { Fabricate(:business) }
@@ -28,9 +29,7 @@ describe BusinessesController do
   describe "POST create" do
     context "input is valid" do
       let(:business_hash) { Fabricate.attributes_for(:business) }
-      before do
-        post :create, business: business_hash
-      end
+      before { post :create, business: business_hash }
 
       it_behaves_like "show_flash_message", :success
 
@@ -42,9 +41,7 @@ describe BusinessesController do
     end
 
     context "input is invalid" do
-      before do
-        post :create, business: { name: "some business"}
-      end
+      before { post :create, business: { name: "some business"} }
 
       it "cannot create a new business" do
         expect(Business.count).to eq(0)
